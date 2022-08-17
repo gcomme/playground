@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                color: Colors.grey,
+                color: Colors.red,
                 child: const Card(
                   child: Text('Chart'),
                 ),
