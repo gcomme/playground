@@ -20,6 +20,14 @@ class MyApp extends StatelessWidget {
     ),
   ];
 
+  void startModal(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return Container(child: Text('asdfasf'));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +36,11 @@ class MyApp extends StatelessWidget {
         body: Column(
             children: transactions.map((tx) {
           return Column(
-            children: [Text(tx.title)],
+            children: [
+              Text(tx.title),
+              ElevatedButton(
+                  onPressed: () => startModal(context), child: Text("Click me"))
+            ],
           );
         }).toList()),
       ),
