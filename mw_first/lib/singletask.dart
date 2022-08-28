@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_tawk/flutter_tawk.dart';
+
 class Task extends StatelessWidget {
   final index;
 
@@ -13,6 +15,23 @@ class Task extends StatelessWidget {
       ),
       body: Column(
         children: [
+          /* Tawk(
+            directChatLink:
+                'https://tawk.to/chat/62b744fdb0d10b6f3e794c6f/1g6dub0a5',
+            visitor: TawkVisitor(
+              name: 'Ayoub AMINE',
+              email: 'ayoubamine2a@gmail.com',
+            ),
+            onLoad: () {
+              print('Hello Tawk!');
+            },
+            onLinkTap: (String url) {
+              print(url);
+            },
+            placeholder: const Center(
+              child: Text('Loading...'),
+            ),
+          ), */
           Text(index.toString()),
           // Text(counter.toString()),
           Center(
