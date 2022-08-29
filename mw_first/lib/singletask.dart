@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tawk/flutter_tawk.dart';
@@ -6,7 +8,23 @@ import './task_data.dart';
 class Task extends StatelessWidget {
   final index;
 
-  const Task(this.index);
+  Task(this.index);
+
+  var userCommentController = TextEditingController();
+
+  // update comment
+  // tasks[0]['comments'][0]['id'] = '500';
+
+  //tasks[0]['comments'].add({'id': '2'});
+
+  addComment() {
+    //tasks[this.index].insert({'comment': 'fdsafasfa'});
+    // tasks[0]['comments'].add({'id': '2'});
+    tasks[this.index]['comments'].add({'id': userCommentController.text});
+    print(tasks);
+  }
+  // updateComment() {}
+  // deleteComment() {}
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +54,19 @@ class Task extends StatelessWidget {
           Text(index.toString()),
           Text(tasks[this.index]['title'].toString()),
           Text(tasks[this.index]['descrip'].toString()),
+          TextField(
+              decoration: InputDecoration(labelText: 'Add Comment'),
+              controller: userCommentController),
+          ElevatedButton(onPressed: addComment, child: Text('Add Comment')),
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                for (final task in tasks)
+                  for (final comments in task['comments'])
+                    Text(comments['user']),
+              ],
+            ),
+          ),
 
           // Text(counter.toString()),
           Center(

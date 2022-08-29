@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 //import 'package:mw_first/omain.dart';
 import './profile.dart';
 import './singletask.dart';
+import './homepage.dart';
 
 void main() {
   return runApp(MaterialApp(
     title: 'Navigation Basics',
-    home: MyApp(),
+    home: Homepage(),
   ));
 }
 
+/*
 class MyApp extends StatefulWidget {
   //const MyApp({Key? key}) : super(key: key);
 
@@ -25,6 +27,8 @@ class _MyAppState extends State<MyApp> {
     {'id': '0022', 'title': 'Do the dishes', 'status': 'pending'},
     {'id': '0023', 'title': 'Kill the birds', 'status': 'pending'},
   ];
+
+  List<String> numbers = ['dd', 'df', 'ff'];
 
   int counter = 0;
   var mytext = 'sarmad';
@@ -41,9 +45,21 @@ class _MyAppState extends State<MyApp> {
     });
     print(counter);
   }
-
+/*
   addToList() {
     tasks.add({'id': '0024', 'title': 'Kill the birds', 'status': 'pending'});
+    print(tasks.last);
+  }
+ */
+
+  var mycontroller = TextEditingController();
+
+  addToList() {
+    setState(() {
+      tasks
+          .add({'id': '0024', 'title': mycontroller.text, 'status': 'pending'});
+    });
+
     print(tasks.last);
   }
 
@@ -56,9 +72,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
+            Text(mycontroller.text),
             Text(mytext.toString()),
             Text(counter.toString()),
-            ElevatedButton(onPressed: null, child: Text('Open Modal')),
+            ElevatedButton(onPressed: null, child: Text(mycontroller.text)),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -70,13 +87,27 @@ class _MyAppState extends State<MyApp> {
                 child: Text('Next Page')),
             ElevatedButton(
                 onPressed: addCounter, child: const Text('Add Counter')),
-            ElevatedButton(onPressed: addToList, child: Text('Add to list')),
-            TextFormField(
+            // ElevatedButton(onPressed: addToList, child: Text('Add to list')),
+            TextFormField(),
+            TextField(
               decoration: InputDecoration(labelText: 'Name '),
+              controller: mycontroller,
             ),
-            Divider(
+            const Divider(
               height: 2,
               color: Colors.black,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Name '),
+              controller: mycontroller,
+            ),
+            ElevatedButton(
+              onPressed: addToList,
+              //onPressed: createTask(mycontoller),
+              child: Text('Create'),
             ),
             Expanded(
               child: ListView.builder(
@@ -103,3 +134,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+*/
