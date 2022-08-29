@@ -5,27 +5,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tawk/flutter_tawk.dart';
 import './task_data.dart';
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final index;
 
   Task(this.index);
 
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
   var userCommentController = TextEditingController();
 
   // update comment
-  // tasks[0]['comments'][0]['id'] = '500';
-
-  //tasks[0]['comments'].add({'id': '2'});
-
   addComment() {
     //tasks[this.index].insert({'comment': 'fdsafasfa'});
     // tasks[0]['comments'].add({'id': '2'});
-    tasks[this.index]['comments'].add({'id': userCommentController.text});
+    setState(() {
+      tasks[this.widget.index]['comments'].add({
+        'id': '1',
+        'user': userCommentController.text,
+        'comment': userCommentController.text
+      });
+    });
     print(tasks);
   }
-  // updateComment() {}
-  // deleteComment() {}
 
+  // updateComment() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +57,9 @@ class Task extends StatelessWidget {
               child: Text('Loading...'),
             ),
           ), */
-          Text(index.toString()),
-          Text(tasks[this.index]['title'].toString()),
-          Text(tasks[this.index]['descrip'].toString()),
+          Text(widget.index.toString()),
+          Text(tasks[this.widget.index]['title'].toString()),
+          Text(tasks[this.widget.index]['descrip'].toString()),
           TextField(
               decoration: InputDecoration(labelText: 'Add Comment'),
               controller: userCommentController),
