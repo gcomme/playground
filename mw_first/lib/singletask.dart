@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tawk/flutter_tawk.dart';
+import './task_data.dart';
 
 class Task extends StatelessWidget {
   final index;
@@ -33,6 +34,9 @@ class Task extends StatelessWidget {
             ),
           ), */
           Text(index.toString()),
+          Text(tasks[this.index]['title'].toString()),
+          Text(tasks[this.index]['descrip'].toString()),
+
           // Text(counter.toString()),
           Center(
             child: ElevatedButton(
