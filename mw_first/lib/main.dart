@@ -1,15 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:mw_first/screens/homeScreen.dart';
 //import 'package:mw_first/omain.dart';
 import './profile.dart';
 import './singletask.dart';
 import './homepage.dart';
+import './screens/homeScreen.dart';
 
 void main() {
   return runApp(MaterialApp(
     title: 'Navigation Basics',
-    home: Homepage(),
+    home: HomeScreen(),
   ));
 }
 
